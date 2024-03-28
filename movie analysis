@@ -1,0 +1,63 @@
+# Project: Movie Analysis
+
+# Load required packages
+library(tidyverse)
+
+# Function to load custom movie dataset
+load_custom_movies <- function() {
+  custom_movies <- data.frame(
+    title = c(
+      "The Shawshank Redemption", "The Godfather", "The Dark Knight", "Pulp Fiction", "Schindler's List",
+      "The Lord of the Rings: The Return of the King", "The Lord of the Rings: The Fellowship of the Ring",
+      "Forrest Gump", "Fight Club", "Inception", "The Matrix", "Goodfellas", "The Silence of the Lambs",
+      "The Green Mile", "The Usual Suspects", "Se7en", "The Lion King", "The Godfather: Part II", "The Avengers",
+      "The Departed", "Gladiator", "Saving Private Ryan", "The Prestige", "The Pianist", "Avatar",
+      "The Shawshank Redemption", "The Godfather", "The Dark Knight", "Pulp Fiction", "Schindler's List",
+      "The Lord of the Rings: The Return of the King", "The Lord of the Rings: The Fellowship of the Ring",
+      "Forrest Gump", "Fight Club", "Inception", "The Matrix", "Goodfellas", "The Silence of the Lambs",
+      "The Green Mile", "The Usual Suspects", "Se7en", "The Lion King", "The Godfather: Part II", "The Avengers",
+      "The Departed", "Gladiator", "Saving Private Ryan", "The Prestige", "The Pianist", "Avatar"
+    ),
+    year_of_release = c(
+      1994, 1972, 2008, 1994, 1993,
+      2003, 2001, 1994, 1999, 2010, 1999, 1990, 1991, 1999, 1995, 1995, 1994, 1974, 2012, 2006,
+      2000, 1998, 2006, 2002, 2009,
+      1994, 1972, 2008, 1994, 1993,
+      2003, 2001, 1994, 1999, 2010, 1999, 1990, 1991, 1999, 1995, 1995, 1994, 1974, 2012, 2006,
+      2000, 1998, 2006, 2002, 2009
+    ),
+    rating = c(
+      9.3, 9.2, 9.0, 8.9, 8.9,
+      8.9, 8.8, 8.8, 8.8, 8.7, 8.7, 8.7, 8.6, 8.6, 8.6, 8.6, 8.5, 8.5, 8.5, 8.5,
+      8.5, 8.5, 8.5, 8.4, 8.4,
+      9.3, 9.2, 9.0, 8.9, 8.9,
+      8.9, 8.8, 8.8, 8.8, 8.7, 8.7, 8.7, 8.6, 8.6, 8.6, 8.6, 8.5, 8.5, 8.5, 8.5,
+      8.5, 8.5, 8.5, 8.4, 8.4
+    )
+  )
+  return(custom_movies)
+}
+
+# Function to analyze custom movie dataset
+analyze_movies <- function(movies_data) {
+  # Example analysis: Average rating by year of release
+  average_rating_by_year <- movies_data %>%
+    group_by(year_of_release) %>%
+    summarise(avg_rating = mean(rating, na.rm = TRUE)) %>%
+    arrange(year_of_release)
+  
+  # Print the average rating by year of release
+  print(average_rating_by_year)
+}
+
+# Main function
+main <- function() {
+  # Load custom movie dataset
+  movies_data <- load_custom_movies()
+  
+  # Analyze custom movie dataset
+  analyze_movies(movies_data)
+}
+
+# Execute main function
+main()
